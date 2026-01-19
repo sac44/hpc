@@ -142,6 +142,7 @@ while (my $line = <$sacct_fh>) {
             foreach my $kv (split(/,/, $record{$tres_field})) {
                 my ($k, $v) = split(/=/, $kv, 2);
                 $v //= '';
+				if ($k eq 'gres/gpu') {$k="gpu"};
                 if ($k eq 'mem') {
                     if ($v =~ /^(\d+(?:\.\d+)?)([KMGTP])?$/i) {
                         my ($num, $unit) = ($1, uc($2 // 'M'));
