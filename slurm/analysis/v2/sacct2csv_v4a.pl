@@ -16,8 +16,13 @@ my @fields = qw(
     Submit TimelimitRaw User 
 );
 
+	Account AllocCPUS AllocNodes AllocTRES AveRSS AveVMSize Cluster 
+    CPUTimeRAW         ElapsedRaw Eligible End ExitCode                  Group
+    JobID JobIDRaw MaxRSS MaxVMSize NCPUS NNodes NTasks Partition QOS QOSRAW ReqMem ReqTRES Start State 
+    Submit TimelimitRaw User 
+
 my @tresfields = qw(
-    	ReqTRES_billing ReqTRES_cpu ReqTRES_gpu ReqTRES_mem ReqTRES_node
+    ReqTRES_billing ReqTRES_cpu ReqTRES_gpu ReqTRES_mem ReqTRES_node
 	AllocTRES_billing AllocTRES_cpu AllocTRES_gpu AllocTRES_mem AllocTRES_node
 );
 
@@ -159,7 +164,8 @@ while (my $line = <$sacct_fh>) {
     }
 
     my @row_values = map { $record{$_} // '' } @fields;
-    my @extended_values = ($period_id, $period_duration, $cluster_name, $timestamp->strftime("%Y-%m-%dT%H:%M:%S"), @row_values, map { $tres_details{$_} // '' } sort keys %tres_details);
+    my @tres_values = map { $tres_details{$_} // '' } @tresfields;
+    my @extended_values = ($period_id, $period_duration, $cluster_name, $timestamp->strftime("%Y-%m-%dT%H:%M:%S"), @row_values, @tres_values);
     $csv->print($out_fh, \@extended_values);
 }
 
