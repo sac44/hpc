@@ -1,8 +1,11 @@
 #!/bin/bash
+# Usage:  run_weekly_sacct_exports.sh <clustername isca|athena>
+#
+[[ -z "$1" ]] && { echo "Usage: sh ./run_weekly_sacct_exports.sh isca|athena" ; exit 1; }
 
 # Configuration
-CLUSTER_NAME="isca"
-PERL_SCRIPT="./sacct2csv_v5.pl"
+CLUSTER_NAME=$1
+PERL_SCRIPT="./sacct2csv_v5_$CLUSTER_NAME.pl"
 
 # 2024-01-01 is a Monday
 START_DATE="2020-08-17"
