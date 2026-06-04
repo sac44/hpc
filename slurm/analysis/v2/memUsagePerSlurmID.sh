@@ -1,5 +1,7 @@
 #!/bin/sh
-  
+# Usage: memUsagePerSlurmID.sh <clustername isca|athena>
+#
+
 datestamp=$(date +'%F')
 logfile=memUsagePerSlurmID/memUsagePerSlurmID_${datestamp}_$RANDOM.log
 
