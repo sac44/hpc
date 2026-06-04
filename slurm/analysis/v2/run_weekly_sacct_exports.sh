@@ -2,7 +2,7 @@
 
 # Configuration
 CLUSTER_NAME="isca"
-PERL_SCRIPT="./sacct2csv_v4a.pl"
+PERL_SCRIPT="./sacct2csv_v5.pl"
 
 # 2024-01-01 is a Monday
 START_DATE="2020-08-17"
