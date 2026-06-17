@@ -1,4 +1,4 @@
-dir=/cm/shared/bath/scripts/fsstats/per-user/$(date +%Y-%m-%d)
+dir=/<<location>>/scripts/fsstats/per-user/$(date +%Y-%m-%d)
 mkdir -p $dir
 log=$dir/fsstats_progress.log
 err=$dir/fsstats_progress.err
